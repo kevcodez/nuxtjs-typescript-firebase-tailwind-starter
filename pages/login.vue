@@ -35,12 +35,11 @@
                   v-model="email"
                   name="Email"
                   type="email"
-                  required
                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                 />
 
               </div>
-              <span class="mt-2 text-red-700 block">{{ errors[0] }}</span>
+              <span class="mt-2 text-red-700 block text-sm">{{ errors[0] }}</span>
             </ValidationProvider>
           </div>
 
@@ -61,11 +60,10 @@
                   v-model="password"
                   name="Password"
                   type="password"
-                  required
                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                 />
               </div>
-              <span class="mt-2 text-red-700 block">{{ errors[0] }}</span>
+              <span class="mt-2 text-red-700 block text-sm">{{ errors[0] }}</span>
             </ValidationProvider>
           </div>
 
