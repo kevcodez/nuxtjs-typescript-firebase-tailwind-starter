@@ -1,9 +1,14 @@
 <template>
-  <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
+  <div class="min-h-screen bg-gray-50 flex flex-col justify-center sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
+      <img
+        style="max-height: 150px"
+        src="~assets/logo.svg"
+      />
       <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
         Register a new account
       </h2>
+
       <p class="mt-2 text-center text-sm leading-5 text-gray-600 max-w">
         Or
         <nuxt-link
@@ -72,7 +77,6 @@
               <button
                 type="button"
                 class="w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
-                @click="register"
               >
                 Register
               </button>
