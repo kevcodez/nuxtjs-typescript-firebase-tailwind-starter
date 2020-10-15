@@ -19,6 +19,7 @@ export default {
   plugins: ['@/plugins/composition-api', { src: '~/plugins/validate' }],
   components: true,
   buildModules: [
+    '@nuxtjs/composition-api',
     '@nuxt/typescript-build',
     '@nuxtjs/tailwindcss',
   ],

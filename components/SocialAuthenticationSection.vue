@@ -68,31 +68,40 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { useContext } from '@nuxtjs/composition-api'
 
-export default Vue.extend({
-  methods: {
-    loginWithGithub() {
-      const provider = new this.$fireAuthObj.GithubAuthProvider()
-      this.loginWithPopup(provider)
-    },
-    loginWithTwitter() {
-      const provider = new this.$fireAuthObj.TwitterAuthProvider()
-      this.loginWithPopup(provider)
-    },
-    loginWithFacebook() {
-      const provider = new this.$fireAuthObj.FacebookAuthProvider()
-      this.loginWithPopup(provider)
-    },
-    async loginWithPopup(provider) {
+export default {
+  setup(props, { emit }) {
+    const { app: { $fireAuthObj, $fireAuth } } = useContext()
+
+    function loginWithGithub() {
+      const provider = new $fireAuthObj.GithubAuthProvider()
+      loginWithPopup(provider)
+    }
+
+    function loginWithTwitter() {
+      const provider = new $fireAuthObj.TwitterAuthProvider()
+      loginWithPopup(provider)
+    }
+    function loginWithFacebook() {
+      const provider = new $fireAuthObj.FacebookAuthProvider()
+      loginWithPopup(provider)
+    }
+
+    async function loginWithPopup(provider) {
       try {
-        const userCredential = await this.$fireAuth.signInWithPopup(provider)
-        this.$emit("onSuccess", userCredential)
+        const userCredential = await $fireAuth.signInWithPopup(provider)
+        emit("onSuccess", userCredential)
       } catch (err) {
-        this.$emit("onError", err)
+        emit("onError", err)
       }
     }
-  }
-})
 
+    return {
+      loginWithFacebook,
+      loginWithGithub,
+      loginWithTwitter
+    }
+  }
+}
 </script>

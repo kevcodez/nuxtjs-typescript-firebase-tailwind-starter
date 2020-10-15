@@ -22,3 +22,7 @@ Go to nuxt.config.js and change the firebase settings.
 ### Login
 
 ![Login Page](screenshots/Login-Page.png?raw=true "Login Page")
+
+### Registration
+
+![Registration Page](screenshots/Registration-Page.png?raw=true "Registration Page")

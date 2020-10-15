@@ -5,7 +5,7 @@
         style="max-height: 150px"
         src="~assets/logo.svg"
       />
-      <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
+      <h2 class="text-center text-2xl md:text-3xl leading-9 font-extrabold text-gray-900">
         Register a new account
       </h2>
 
@@ -14,7 +14,7 @@
         <nuxt-link
           to="/"
           class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
-        >Login to your existing account.</nuxt-link>
+        >sign in to your existing account.</nuxt-link>
       </p>
     </div>
 

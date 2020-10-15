@@ -14,7 +14,7 @@
           href="/register"
           class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
         >
-          register your account for free.
+          register an account for free.
         </a>
       </p>
     </div>
@@ -139,7 +139,7 @@ export default Vue.extend({
     
   watch: {
     authenticated(newVal) {
-      console.log('chjanged')
+      console.log('changed')
       if (newVal) {
         this.$router.push('/')
       }
