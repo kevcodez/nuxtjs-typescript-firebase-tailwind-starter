@@ -13,5 +13,4 @@ extend('max', max)
 extend('min', min)
 extend('confirmed', confirmed)
 
-// @ts-ignore
 setInteractionMode('eager')

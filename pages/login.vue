@@ -1,18 +1,23 @@
 <template>
-  <div
-    class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8"
-  >
+  <div class="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <h2
-        class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900"
-      >
+      <h2 class="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
         Sign in to your account
       </h2>
+      <p class="mt-2 text-center text-sm leading-5 text-gray-600 max-w">
+        Or
+        <a
+          href="/register"
+          class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
+        >
+          register your account for free.
+        </a>
+      </p>
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <form action="#" method="POST">
+       <ValidationObserver tag="form" @submit.prevent="passes(login)">
           <div>
             <label
               for="email"
@@ -20,15 +25,23 @@
             >
               Email address
             </label>
-            <div class="mt-1 rounded-md shadow-sm">
-              <input
-                id="email"
-                v-model="email"
-                type="email"
-                required
-                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-              />
-            </div>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required|email"
+            >
+              <div class="mt-1 rounded-md shadow-sm">
+                <input
+                  id="email"
+                  v-model="email"
+                  name="Email"
+                  type="email"
+                  required
+                  class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                />
+
+              </div>
+              <span class="mt-2 text-red-700 block">{{ errors[0] }}</span>
+            </ValidationProvider>
           </div>
 
           <div class="mt-6">
@@ -38,15 +51,22 @@
             >
               Password
             </label>
-            <div class="mt-1 rounded-md shadow-sm">
-              <input
-                id="password"
-                v-model="password"
-                type="password"
-                required
-                class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
-              />
-            </div>
+            <ValidationProvider
+              v-slot="{ errors }"
+              rules="required"
+            >
+              <div class="mt-1 rounded-md shadow-sm">
+                <input
+                  id="password"
+                  v-model="password"
+                  name="Password"
+                  type="password"
+                  required
+                  class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
+                />
+              </div>
+              <span class="mt-2 text-red-700 block">{{ errors[0] }}</span>
+            </ValidationProvider>
           </div>
 
           <div class="mt-6">
@@ -54,12 +74,11 @@
               type="button"
               class="bg-indigo-500 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded"
               :disabled="signingIn"
-              @click="login"
             >
               Sign in
             </button>
           </div>
-        </form>
+       </ValidationObserver>
       </div>
     </div>
   </div>
