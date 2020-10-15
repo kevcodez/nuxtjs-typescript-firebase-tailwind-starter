@@ -1,6 +1,6 @@
-# Quickstarter for NuxtJs
+# Quickstarter for Nuxt.js and Firebase
 
-## Setup
+## Setup/Features
 
 * Nuxtjs
 * Typescript
