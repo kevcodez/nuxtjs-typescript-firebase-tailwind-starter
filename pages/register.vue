@@ -2,6 +2,7 @@
   <div class="min-h-screen bg-gray-50 flex flex-col justify-center sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
       <img
+        alt="Company Logo"
         style="max-height: 150px"
         src="~assets/logo.svg"
       />
@@ -9,7 +10,7 @@
         Register a new account
       </h2>
 
-      <p class="mt-2 text-center text-sm leading-5 text-gray-600 max-w">
+      <p class="mt-2 text-center text-sm leading-5 max-w">
         Or
         <nuxt-link
           to="/"

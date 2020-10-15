@@ -1,14 +1,9 @@
 <template>
   <div class="min-h-screen bg-gray-50 flex flex-col justify-center sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <img
-        style="max-height: 150px"
-        src="~assets/logo.svg"
-      />
-      <h2 class="text-center text-2xl md:text-3xl leading-9 font-extrabold text-gray-900">
-        Sign in to your account
-      </h2>
-      <p class="mt-2 text-center text-sm leading-5 text-gray-600 max-w">
+      <img alt="Company Logo" style="max-height: 150px" src="~assets/logo.svg" />
+      <h2 class="text-center text-2xl md:text-3xl leading-9 font-extrabold text-gray-900">Sign in to your account</h2>
+      <p class="mt-2 text-center text-sm leading-5 max-w">
         Or
         <a
           href="/register"
@@ -21,21 +16,10 @@
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <ValidationObserver
-          tag="form"
-          @submit.prevent="passes(login)"
-        >
+        <ValidationObserver tag="form" @submit.prevent="passes(login)">
           <div>
-            <label
-              for="email"
-              class="block text-sm font-medium leading-5 text-gray-700"
-            >
-              Email address
-            </label>
-            <ValidationProvider
-              v-slot="{ errors }"
-              rules="required|email"
-            >
+            <label for="email" class="block text-sm font-medium leading-5 text-gray-700"> Email address </label>
+            <ValidationProvider v-slot="{ errors }" rules="required|email">
               <div class="mt-1 rounded-md shadow-sm">
                 <input
                   id="email"
@@ -44,23 +28,14 @@
                   type="email"
                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                 />
-
               </div>
               <span class="mt-2 text-red-700 block text-sm">{{ errors[0] }}</span>
             </ValidationProvider>
           </div>
 
           <div class="mt-6">
-            <label
-              for="password"
-              class="block text-sm font-medium leading-5 text-gray-700"
-            >
-              Password
-            </label>
-            <ValidationProvider
-              v-slot="{ errors }"
-              rules="required"
-            >
+            <label for="password" class="block text-sm font-medium leading-5 text-gray-700"> Password </label>
+            <ValidationProvider v-slot="{ errors }" rules="required">
               <div class="mt-1 rounded-md shadow-sm">
                 <input
                   id="password"
@@ -124,10 +99,7 @@ export default Vue.extend({
     async login() {
       try {
         this.signingIn = true
-        await this.$fireAuth.signInWithEmailAndPassword(
-          this.email,
-          this.password
-        )
+        await this.$fireAuth.signInWithEmailAndPassword(this.email, this.password)
       } catch (err) {
         console.log(err)
       }
@@ -136,15 +108,15 @@ export default Vue.extend({
     onSuccessfulAuthentication() {
       this.$router.push('/')
     },
-    
-  watch: {
-    authenticated(newVal) {
-      console.log('changed')
-      if (newVal) {
-        this.$router.push('/')
-      }
+
+    watch: {
+      authenticated(newVal) {
+        console.log('changed')
+        if (newVal) {
+          this.$router.push('/')
+        }
+      },
     },
   },
-  }
 })
 </script>
