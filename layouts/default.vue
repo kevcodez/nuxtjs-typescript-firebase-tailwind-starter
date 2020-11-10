@@ -16,7 +16,7 @@ import Vue from 'vue'
 export default Vue.extend({
   methods: {
     async logout() {
-      await this.$fireAuth.signOut()
+      await this.$fire.auth.signOut()
       this.$router.push('/login')
     },
   },

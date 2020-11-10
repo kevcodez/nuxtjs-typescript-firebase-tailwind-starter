@@ -125,7 +125,7 @@ export default Vue.extend({
           password: this.password,
         }
 
-        await this.$fireAuth.createUserWithEmailAndPassword(this.email, this.password)
+        await this.$fire.auth.createUserWithEmailAndPassword(this.email, this.password)
         this.$router.push(`/`)
       } catch (err) {
         console.log(err)

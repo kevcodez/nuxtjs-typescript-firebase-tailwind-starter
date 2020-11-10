@@ -99,7 +99,8 @@ export default Vue.extend({
     async login() {
       try {
         this.signingIn = true
-        await this.$fireAuth.signInWithEmailAndPassword(this.email, this.password)
+
+        await this.$fire.auth.signInWithEmailAndPassword(this.email, this.password)
       } catch (err) {
         console.log(err)
       }
