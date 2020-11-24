@@ -1,45 +1,31 @@
 <template>
   <div class="min-h-screen bg-gray-50 flex flex-col justify-center sm:px-6 lg:px-8">
     <div class="sm:mx-auto sm:w-full sm:max-w-md">
-      <img
-        alt="Company Logo"
-        style="max-height: 150px"
-        src="~assets/logo.svg"
-      />
-      <h2 class="text-center text-2xl md:text-3xl leading-9 font-extrabold text-gray-900">
-        Register a new account
-      </h2>
+      <img alt="Company Logo" style="max-height: 150px" src="~assets/logo.svg" />
+      <h2 class="text-center text-2xl md:text-3xl leading-9 font-extrabold text-gray-900">Register a new account</h2>
 
       <p class="mt-2 text-center text-sm leading-5 max-w">
         Or
         <nuxt-link
           to="/"
           class="font-medium text-indigo-600 hover:text-indigo-500 focus:outline-none focus:underline transition ease-in-out duration-150"
-        >sign in to your existing account.</nuxt-link>
+          >sign in to your existing account.</nuxt-link
+        >
       </p>
     </div>
 
     <div class="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
       <div class="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-        <ValidationObserver
-          tag="form"
-          @submit.prevent="passes(register)"
-        >
+        <ValidationObserver tag="form" @submit.prevent="passes(register)">
           <div>
-            <label
-              for="email"
-              class="block text-sm font-medium leading-5 text-gray-700"
-            >Email address</label>
+            <label for="email" class="block text-sm font-medium leading-5 text-gray-700">Email address</label>
 
-            <ValidationProvider
-              v-slot="{ errors }"
-              rules="required|email"
-            >
+            <ValidationProvider v-slot="{ errors }" rules="required|email">
               <div class="mt-1 rounded-md shadow-sm">
                 <input
                   id="email"
-                  name="Email"
                   v-model="email"
+                  name="Email"
                   type="email"
                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                 />
@@ -50,20 +36,14 @@
           </div>
 
           <div class="mt-6">
-            <label
-              for="password"
-              class="block text-sm font-medium leading-5 text-gray-700"
-            >Password</label>
+            <label for="password" class="block text-sm font-medium leading-5 text-gray-700">Password</label>
 
-            <ValidationProvider
-              v-slot="{ errors }"
-              rules="required"
-            >
+            <ValidationProvider v-slot="{ errors }" rules="required">
               <div class="mt-1 rounded-md shadow-sm">
                 <input
                   id="password"
-                  name="Password"
                   v-model="password"
+                  name="Password"
                   type="password"
                   class="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md placeholder-gray-400 focus:outline-none focus:shadow-outline-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5"
                 />
@@ -95,12 +75,8 @@
             </div>
           </div>
 
-          <SocialAuthenticationSection
-            class="mt-4"
-            @onSuccess="onSuccessfulAuthentication"
-          />
+          <SocialAuthenticationSection class="mt-4" @onSuccess="onSuccessfulAuthentication" />
         </div>
-
       </div>
     </div>
   </div>
@@ -120,11 +96,6 @@ export default Vue.extend({
   methods: {
     async register() {
       try {
-        const data = {
-          email: this.email,
-          password: this.password,
-        }
-
         await this.$fire.auth.createUserWithEmailAndPassword(this.email, this.password)
         this.$router.push(`/`)
       } catch (err) {
@@ -133,7 +104,7 @@ export default Vue.extend({
     },
     onSuccessfulAuthentication() {
       this.$router.push('/')
-    }
+    },
   },
 })
 </script>

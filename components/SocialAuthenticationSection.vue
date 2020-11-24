@@ -65,30 +65,28 @@ import { useContext } from '@nuxtjs/composition-api'
 
 export default {
   setup(_props, { emit }) {
-    const {
-      app: { $fireModule.auth, $fire.auth },
-    } = useContext()
+    const { app } = useContext()
 
     function loginWithGithub() {
-      const provider = new $fireModule.auth.GithubAuthProvider()
+      const provider = new app.$fireModule.auth.GithubAuthProvider()
       loginWithPopup(provider)
     }
 
     function loginWithTwitter() {
-      const provider = new $fireModule.auth.TwitterAuthProvider()
+      const provider = new app.$fireModule.auth.TwitterAuthProvider()
       loginWithPopup(provider)
     }
     function loginWithFacebook() {
-      const provider = new $fireModule.auth.FacebookAuthProvider()
+      const provider = new app.$fireModule.auth.FacebookAuthProvider()
       loginWithPopup(provider)
     }
 
     async function loginWithPopup(provider) {
       try {
-        const userCredential = await $fire.auth.signInWithPopup(provider)
-        emit('onSuccess', userCredential)
+        const userCredential = await app.$fire.auth.signInWithPopup(provider)
+        emit('on-success', userCredential)
       } catch (err) {
-        emit('onError', err)
+        emit('on-error', err)
       }
     }
 

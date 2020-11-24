@@ -13,19 +13,15 @@ export default {
       },
     ],
     htmlAttrs: {
-      lang: 'en'
+      lang: 'en',
     },
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
   css: [],
   plugins: ['@/plugins/composition-api', { src: '~/plugins/validate' }],
   components: true,
-  buildModules: [
-    '@nuxtjs/composition-api',
-    '@nuxt/typescript-build',
-    '@nuxtjs/tailwindcss',
-  ],
- 
+  buildModules: ['@nuxtjs/composition-api', '@nuxt/typescript-build', '@nuxtjs/tailwindcss'],
+
   modules: [
     [
       '@nuxtjs/firebase',

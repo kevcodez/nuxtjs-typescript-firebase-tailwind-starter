@@ -1,7 +1,5 @@
 <template>
-  <div>
-    secured page
-  </div>
+  <div>secured page</div>
 </template>
 
 <script lang="ts">
